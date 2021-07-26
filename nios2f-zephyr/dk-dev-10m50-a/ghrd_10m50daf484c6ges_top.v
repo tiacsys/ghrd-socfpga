@@ -51,7 +51,7 @@ module ghrd_10m50daf484c6ges_top (
 	input	wire [3:0]	ENETA_RX_D,	// 2.5 V
 	input	wire		ENETA_RX_DV,	// 2.5 V
 	input	wire		ENETA_RX_ER,	// 2.5 V
-	input	wire		ENETA_RESETn,	// 2.5 V
+	output	wire		ENETA_RESETn,	// 2.5 V
 	input	wire		ENETA_RX_CRS,	// 2.5 V
 	input	wire		ENETA_RX_COL,	// 2.5 V
 	output	wire		ENETA_LED_LINK100,// 2.5 V
@@ -71,7 +71,7 @@ module ghrd_10m50daf484c6ges_top (
 	input	wire [3:0]	ENETB_RX_D,	// 2.5 V
 	input	wire		ENETB_RX_DV,	// 2.5 V
 	input	wire		ENETB_RX_ER,	// 2.5 V
-	input	wire		ENETB_RESETn,	// 2.5 V
+	output	wire		ENETB_RESETn,	// 2.5 V
 	input	wire		ENETB_RX_CRS,	// 2.5 V
 	input	wire		ENETB_RX_COL,	// 2.5 V
 	output	wire		ENETB_LED_LINK100,// 2.5 V
@@ -169,6 +169,60 @@ module ghrd_10m50daf484c6ges_top (
 	input	wire		CLK_10_ADC	// 2.5 V (10 MHz)
 
 );
+
+	// Debounce and set correct polarity of reset input signal CPU_RESETn
+	wire			system_reset_n;
+	bit_syncin_debouncer system_reset_debouncer (
+		.clk		(CLK_50_MAX10),
+		.data_in_n	(CPU_RESETn),
+		.data_out_n	(system_reset_n)
+	);
+	defparam system_reset_debouncer.WIDTH = 20;	// debounce 10ms@50MHz
+
+	// Periphery power-on reset delay
+	wire			periphery_reset_n;
+	binary_delay periphery_reset_delay (
+		.clk		(CLK_50_MAX10),
+		.reset_n	(system_reset_n),
+		.data_out_n	(periphery_reset_n)
+	);
+	defparam periphery_reset_delay.WIDTH = 20;	// debounce 10ms@50MHz
+
+`ifdef ETHERNET_A
+	// Ethernet PHY A power-on reset delay
+	assign ENETA_RESETn = periphery_reset_n;
+`endif
+
+`ifdef ETHERNET_B
+	// Ethernet PHY B power-on reset delay
+	assign ENETB_RESETn = periphery_reset_n;
+`endif
+
+	// Debounce logic to clean out glitches within 1ms of user push buttons
+	wire [3:0]		debounced_user_pb;
+	binary_debouncer user_pb_debouncer (
+		.clk		(CLK_50_MAX10),
+		.reset_n	(system_reset_n),
+		.data_in	(USER_PB),
+		.data_out	(debounced_user_pb)
+	);
+	defparam user_pb_debouncer.WIDTH = 4;
+	defparam user_pb_debouncer.POLARITY = "LOW";
+	defparam user_pb_debouncer.TIMEOUT = 50000;	// debounce 1ms@50MHz
+	defparam user_pb_debouncer.TIMEOUT_WIDTH = 16;	// ceil(log2(TIMEOUT))
+
+	// Debounce logic to clean out glitches within 1ms of user dip switches
+	wire [3:0]		debounced_user_dipsw;
+	binary_debouncer user_dipsw_debouncer (
+		.clk		(CLK_50_MAX10),
+		.reset_n	(system_reset_n),
+		.data_in	(USER_DIPSW),
+		.data_out	(debounced_user_dipsw)
+	);
+	defparam user_dipsw_debouncer.WIDTH = 5;
+	defparam user_dipsw_debouncer.POLARITY = "LOW";
+	defparam user_dipsw_debouncer.TIMEOUT = 50000;	// debounce 1ms@50MHz
+	defparam user_dipsw_debouncer.TIMEOUT_WIDTH = 16;// ceil(log2(TIMEOUT))
 
 `ifdef SYSRUNSIG
 	// System running signal by 50MHz clock over variable-bit count register
