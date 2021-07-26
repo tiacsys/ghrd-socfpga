@@ -12,6 +12,9 @@
 `define GPIO
 `define JTAG
 //`define DDR3
+`define SYSRUNSIG
+//`define SYSZEPHYR
+//`define SYSLINUX
 
 module ghrd_10m50daf484c6ges_top (
 
@@ -166,5 +169,26 @@ module ghrd_10m50daf484c6ges_top (
 	input	wire		CLK_10_ADC	// 2.5 V (10 MHz)
 
 );
+
+`ifdef SYSRUNSIG
+	// System running signal by 50MHz clock over variable-bit count register
+	binary_counter sysrunsig_cnt (
+		.clk		(CLK_50_MAX10),
+		.reset_n	(system_reset_n),
+		.enable_n	(1'b0),
+`ifdef USER_PINS
+		.data_out_msb	(USER_LED[4])
+`else
+		.data_out_msb	()
+`endif
+	);
+`ifdef SYSLINUX
+	defparam sysrunsig_cnt.WIDTH = 26;
+`elsif SYSZEPHYR
+	defparam sysrunsig_cnt.WIDTH = 24;
+`else
+	defparam sysrunsig_cnt.WIDTH = 22;
+`endif
+`endif
 
 endmodule
