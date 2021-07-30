@@ -26,7 +26,7 @@
 # Notes:
 #
 # 1) The default values for assignments are stored in the file:
-#		ghrd_10m50da_assignment_defaults.qdf
+#		ghrd_10m50daf484c6ges_assignment_defaults.qdf
 #    If this file doesn't exist, see file:
 #		assignment_defaults.qdf
 #
@@ -42,7 +42,7 @@ set_global_assignment -name DEVICE 10M50DAF484C6GES
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.0.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:01:48  APRIL 27, 2016"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Standard Edition"
-set_global_assignment -name TOP_LEVEL_ENTITY ghrd_10m50da_top
+set_global_assignment -name TOP_LEVEL_ENTITY ghrd_10m50daf484c6ges_top
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name UNIPHY_SEQUENCER_DQS_CONFIG_ENABLE ON
 set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
@@ -382,20 +382,16 @@ set_instance_assignment -name GLOBAL_SIGNAL OFF -to ghrd_system_inst|mem_if_ddr3
 set_instance_assignment -name GLOBAL_SIGNAL OFF -to ghrd_system_inst|mem_if_ddr3_emif_0|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[1] -tag __ghrd_system_mem_if_ddr3_emif_0_p0
 set_instance_assignment -name ENABLE_BENEFICIAL_SKEW_OPTIMIZATION_FOR_NON_GLOBAL_CLOCKS ON -to ghrd_system_inst|mem_if_ddr3_emif_0 -tag __ghrd_system_mem_if_ddr3_emif_0_p0
 set_instance_assignment -name GLOBAL_SIGNAL OFF -to "dut_example_if0:if0|dut_example_if0_p0:p0|dut_example_if0_p0_ghrd_system_mem_if_ddr3_emif_0_p0_m10:umemphy|dut_example_if0_p0_dqdqs_pads_m10:dq_ddio[*].ubidir_dq_dqs|altera_gpio_lite:dq_ddio_io|altgpio_one_bit:gpio_one_bit.i_loop[*].altgpio_bit_i|fr_clock"
-set_instance_assignment -name GLOBAL_SIGNAL OFF -to ghrd_10m50daf484c6ges_inst|mem_if_ddr3_emif_0|p0|umemphy|ureset|phy_reset_n -tag __ghrd_10m50daf484c6ges_mem_if_ddr3_emif_0_p0
-set_instance_assignment -name GLOBAL_SIGNAL OFF -to ghrd_10m50daf484c6ges_inst|mem_if_ddr3_emif_0|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[0] -tag __ghrd_10m50daf484c6ges_mem_if_ddr3_emif_0_p0
-set_instance_assignment -name GLOBAL_SIGNAL OFF -to ghrd_10m50daf484c6ges_inst|mem_if_ddr3_emif_0|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[1] -tag __ghrd_10m50daf484c6ges_mem_if_ddr3_emif_0_p0
-set_instance_assignment -name ENABLE_BENEFICIAL_SKEW_OPTIMIZATION_FOR_NON_GLOBAL_CLOCKS ON -to ghrd_10m50daf484c6ges_inst|mem_if_ddr3_emif_0 -tag __ghrd_10m50daf484c6ges_mem_if_ddr3_emif_0_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to socfpga_nios2f|mem_if_ddr3_emif_0|p0|umemphy|ureset|phy_reset_n -tag __ghrd_10m50daf484c6ges_mem_if_ddr3_emif_0_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to socfpga_nios2f|mem_if_ddr3_emif_0|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[0] -tag __ghrd_10m50daf484c6ges_mem_if_ddr3_emif_0_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to socfpga_nios2f|mem_if_ddr3_emif_0|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[1] -tag __ghrd_10m50daf484c6ges_mem_if_ddr3_emif_0_p0
+set_instance_assignment -name ENABLE_BENEFICIAL_SKEW_OPTIMIZATION_FOR_NON_GLOBAL_CLOCKS ON -to socfpga_nios2f|mem_if_ddr3_emif_0 -tag __ghrd_10m50daf484c6ges_mem_if_ddr3_emif_0_p0
 set_instance_assignment -name GLOBAL_SIGNAL OFF -to "dut_example_if0:if0|dut_example_if0_p0:p0|dut_example_if0_p0_ghrd_10m50daf484c6ges_mem_if_ddr3_emif_0_p0_m10:umemphy|dut_example_if0_p0_dqdqs_pads_m10:dq_ddio[*].ubidir_dq_dqs|altera_gpio_lite:dq_ddio_io|altgpio_one_bit:gpio_one_bit.i_loop[*].altgpio_bit_i|fr_clock"
 set_global_assignment -name EXTERNAL_FLASH_FALLBACK_ADDRESS 00000000
 set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "PASSIVE SERIAL"
 set_location_assignment PIN_M9 -to clk_50
 set_location_assignment PIN_D9 -to fpga_reset_n
 set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
-set_global_assignment -name VERILOG_FILE ghrd_10m50da_top.v
-set_global_assignment -name QIP_FILE ghrd_10m50da/synthesis/ghrd_10m50da.qip
-set_global_assignment -name SDC_FILE ghrd_timing.sdc
-
 set_location_assignment PIN_A10 -to i2c_scl
 set_location_assignment PIN_B15 -to i2c_sda
 set_location_assignment PIN_B7 -to spi_sclk
@@ -407,6 +403,11 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_mosi
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_sclk
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_ssn
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to fpga_reset_n
-set_global_assignment -name USE_SIGNALTAP_FILE output_files/uart.stp
+
+set_global_assignment -name VERILOG_FILE ghrd_10m50daf484c6ges_top.v
+set_global_assignment -name QIP_FILE ghrd_10m50daf484c6ges_nios2f/synthesis/ghrd_10m50daf484c6ges_nios2f.qip
+set_global_assignment -name SDC_FILE ghrd_10m50daf484c6ges_timing.sdc
 set_global_assignment -name SIGNALTAP_FILE output_files/uart.stp
+set_global_assignment -name USE_SIGNALTAP_FILE output_files/uart.stp
+
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
