@@ -278,37 +278,45 @@ module ghrd_10m50daf484c6ges_top (
 
 `ifdef USER_PINS
 		// LED, Push-Button, DIP-SWitches
-		.led_external_connection_export			(USER_LED[3:0]),
+		.pio_avalon_led_external_connection_export	(USER_LED[3:0]),
 `endif
 
 `ifdef UART
 		// 16550 UART interface
-		.a_16550_uart_0_rs_232_serial_sout_oe		(),
-		.a_16550_uart_0_rs_232_serial_sout		(UART_TX),
-		.a_16550_uart_0_rs_232_serial_sin		(UART_RX),
+		.uart_16550_0_rs_232_serial_sout_oe		(),
+		.uart_16550_0_rs_232_serial_sout		(UART_TX),
+		.uart_16550_0_rs_232_serial_sin			(UART_RX),
+		.uart_16550_0_rs_232_modem_out2_n		(),
+		.uart_16550_0_rs_232_modem_out1_n		(),
+		.uart_16550_0_rs_232_modem_dtr_n		(),
+		.uart_16550_0_rs_232_modem_ri_n			(),
+		.uart_16550_0_rs_232_modem_dcd_n		(),
+		.uart_16550_0_rs_232_modem_dsr_n		(),
+		.uart_16550_0_rs_232_modem_rts_n		(),
+		.uart_16550_0_rs_232_modem_cts_n		(),
 `endif
 
 `ifdef HDMI
 		// I2C -- HDMI Tranceiver interface
-		.i2c_0_i2c_serial_scl_oe			(i2c_serial_scl_oe),
-		.i2c_0_i2c_serial_scl_in			(i2c_serial_scl_in),
-		.i2c_0_i2c_serial_sda_oe			(i2c_serial_sda_oe),
-		.i2c_0_i2c_serial_sda_in			(i2c_serial_sda_in),
+		.i2c_avalon_0_i2c_serial_scl_oe			(i2c_serial_scl_oe),
+		.i2c_avalon_0_i2c_serial_scl_in			(i2c_serial_scl_in),
+		.i2c_avalon_0_i2c_serial_sda_oe			(i2c_serial_sda_oe),
+		.i2c_avalon_0_i2c_serial_sda_in			(i2c_serial_sda_in),
 `endif
 
 `ifdef PMOD
 		// SPI -- Digilent Peripheral Modules (Pmod) interface A
-		.spi_0_external_SCLK				(PMODA_IO[3]),
-		.spi_0_external_MISO				(PMODA_IO[2]),
-		.spi_0_external_MOSI				(PMODA_IO[1]),
-		.spi_0_external_SS_n				(PMODA_IO[0]),
+		.spi_avalon_0_external_SCLK			(PMODA_IO[3]),
+		.spi_avalon_0_external_MISO			(PMODA_IO[2]),
+		.spi_avalon_0_external_MOSI			(PMODA_IO[1]),
+		.spi_avalon_0_external_SS_n			(PMODA_IO[0]),
 `endif
 
 `ifdef QSPI
 		// QSPI Serial Flash interface (1x512Mb)
-		.ext_flash_qspi_pins_ncs			(QSPI_CSn),
-		.ext_flash_qspi_pins_dclk			(QSPI_CLK),
-		.ext_flash_qspi_pins_data			(QSPI_IO),
+		.ext_flash_0_qspi_pins_ncs			(QSPI_CSn),
+		.ext_flash_0_qspi_pins_dclk			(QSPI_CLK),
+		.ext_flash_0_qspi_pins_data			(QSPI_IO),
 `endif
 
 `ifdef DDR3
