@@ -170,6 +170,20 @@ module ghrd_10m50daf484c6ges_top (
 
 );
 
+`ifdef DDR3
+	// DDR3 interface assignments
+	wire			local_init_done;
+	wire			local_cal_success;
+	wire			local_cal_fail;
+
+	// DDR3 Address Bit #13 is not available for DDR3 SDRAM A (64Mx16)
+	assign DDR3_A[13] = 1'b0;
+
+	// TODO / FIXME:
+	// combine 'system_reset_n' with 'system_reset_debouncer.data_out_n'
+	assign system_reset_n = CPU_RESETn & local_init_done;
+`endif
+
 	// Debounce and set correct polarity of reset input signal CPU_RESETn
 	wire			system_reset_n;
 	bit_syncin_debouncer system_reset_debouncer (
@@ -244,5 +258,89 @@ module ghrd_10m50daf484c6ges_top (
 	defparam sysrunsig_cnt.WIDTH = 22;
 `endif
 `endif
+
+`ifdef HDMI
+	// I2C -- HDMI Tranceiver interface
+	wire			i2c_serial_sda_in;
+	wire			i2c_serial_scl_in;
+	wire			i2c_serial_sda_oe;
+	wire			i2c_serial_scl_oe;
+
+	assign i2c_serial_scl_in = HDMI_SCL;
+	assign HDMI_SCL = i2c_serial_scl_oe ? 1'b0 : 1'bz;
+
+	assign i2c_serial_sda_in = HDMI_SDA;
+	assign HDMI_SDA = i2c_serial_sda_oe ? 1'b0 : 1'bz;
+`endif
+
+	// SoC sub-system module
+	ghrd_10m50daf484c6ges_nios2f socfpga_nios2f (
+
+`ifdef USER_PINS
+		// LED, Push-Button, DIP-SWitches
+		.led_external_connection_export			(USER_LED[3:0]),
+`endif
+
+`ifdef UART
+		// 16550 UART interface
+		.a_16550_uart_0_rs_232_serial_sout_oe		(),
+		.a_16550_uart_0_rs_232_serial_sout		(UART_TX),
+		.a_16550_uart_0_rs_232_serial_sin		(UART_RX),
+`endif
+
+`ifdef HDMI
+		// I2C -- HDMI Tranceiver interface
+		.i2c_0_i2c_serial_scl_oe			(i2c_serial_scl_oe),
+		.i2c_0_i2c_serial_scl_in			(i2c_serial_scl_in),
+		.i2c_0_i2c_serial_sda_oe			(i2c_serial_sda_oe),
+		.i2c_0_i2c_serial_sda_in			(i2c_serial_sda_in),
+`endif
+
+`ifdef PMOD
+		// SPI -- Digilent Peripheral Modules (Pmod) interface A
+		.spi_0_external_SCLK				(PMODA_IO[3]),
+		.spi_0_external_MISO				(PMODA_IO[2]),
+		.spi_0_external_MOSI				(PMODA_IO[1]),
+		.spi_0_external_SS_n				(PMODA_IO[0]),
+`endif
+
+`ifdef QSPI
+		// QSPI Serial Flash interface (1x512Mb)
+		.ext_flash_qspi_pins_ncs			(QSPI_CSn),
+		.ext_flash_qspi_pins_dclk			(QSPI_CLK),
+		.ext_flash_qspi_pins_data			(QSPI_IO),
+`endif
+
+`ifdef DDR3
+		// DDR3 memory interface (1x64Mx16, 1x128Mx8)
+		.memory_mem_a					(DDR3_A[12:0]),
+		.memory_mem_ba					(DDR3_BA),
+		.memory_mem_cas_n				(DDR3_CASn),
+		.memory_mem_cke					(DDR3_CKE),
+		.memory_mem_ck					(DDR3_CLK_p),
+		.memory_mem_ck_n				(DDR3_CLK_n),
+		.memory_mem_cs_n				(DDR3_CSn),
+		.memory_mem_dm					(DDR3_DM),
+		.memory_mem_dq					(DDR3_DQ),
+		.memory_mem_dqs					(DDR3_DQS_p),
+		.memory_mem_dqs_n				(DDR3_DQS_n),
+		.memory_mem_odt					(DDR3_ODT),
+		.memory_mem_ras_n				(DDR3_RASn),
+		.memory_mem_reset_n				(DDR3_RESETn),
+		.memory_mem_we_n				(DDR3_WEn),
+		.mem_if_ddr3_emif_0_status_local_init_done	(local_init_done),
+		.mem_if_ddr3_emif_0_status_local_cal_success	(local_cal_success),
+		.mem_if_ddr3_emif_0_status_local_cal_fail	(local_cal_fail),
+		.mem_resetn_in_reset_reset_n			(CPU_RESETn),
+`endif
+
+		// Reset and Clocks from external PLL
+		.reset_reset_n					(system_reset_n),
+`ifdef DDR3
+		.ref_clock_bridge_in_clk_clk			(CLK_DDR3_100_p),
+`endif
+		.clk_clk					(CLK_50_MAX10)
+
+	);
 
 endmodule
