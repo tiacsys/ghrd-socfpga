@@ -1,0 +1,42 @@
+ghrd-socfpga
+#####################
+
+Origin:
+   Golden Hardware Reference Design (GHRD) Build Scripts
+      https://github.com/altera-opensource/ghrd-socfpga
+   Golden System Reference Design (GSRD) User Manuals
+      https://rocketboards.org/foswiki/Documentation/GSRD
+      https://rocketboards.org/foswiki/Documentation/CodeBench
+
+Status:
+   v18.1
+
+Import instructions:
+   When we import GHRD from all the multiple origins we manually rework and
+   qualify most of all the original code and provide this complete new file
+   and directory structure.
+
+Purpose:
+   SOC abstraction layer used by SOCFPGA based boards.
+
+Description:
+   GHRD is a reference design for System On Chip (SoC) FPGA. The GHRD works
+   together with Golden Software Reference Design (GSRD) for complete solution
+   to Zephyr, U-Boot and Linux with SoC Development boards.
+
+Dependencies:
+   Depends on Zephyr itself as it utilizes Zephyr's APIs to provide an
+   abstraction to ghrd-socfpga, especially DTS. You will need Quartus Prime
+   software installed in the host PC.
+
+URL:
+   https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/nios2/nios2f-zephyr/cpu
+
+Maintained-by:
+   External
+
+License:
+   MIT
+
+License Link:
+   https://github.com/altera-opensource/ghrd-socfpga/blob/master/license.txt
