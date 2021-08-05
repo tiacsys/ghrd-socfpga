@@ -26,7 +26,7 @@
       }
       datum baseAddress
       {
-         value = "1049344";
+         value = "1585152";
          type = "String";
       }
    }
@@ -42,7 +42,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "9";
          type = "int";
       }
    }
@@ -50,7 +50,7 @@
    {
       datum baseAddress
       {
-         value = "1049152";
+         value = "1576960";
          type = "String";
       }
    }
@@ -58,7 +58,7 @@
    {
       datum baseAddress
       {
-         value = "134217728";
+         value = "1879048192";
          type = "String";
       }
    }
@@ -74,7 +74,7 @@
    {
       datum baseAddress
       {
-         value = "1049088";
+         value = "1052672";
          type = "String";
       }
    }
@@ -82,23 +82,33 @@
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "7";
          type = "int";
       }
    }
    element msgdma_0.csr
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
-         value = "1049280";
+         value = "2105600";
          type = "String";
       }
    }
    element msgdma_0.descriptor_slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
-         value = "1049328";
+         value = "2105632";
          type = "String";
       }
    }
@@ -106,7 +116,7 @@
    {
       datum _sortIndex
       {
-         value = "3";
+         value = "2";
          type = "int";
       }
    }
@@ -119,7 +129,7 @@
       }
       datum baseAddress
       {
-         value = "2099200";
+         value = "2097152";
          type = "String";
       }
    }
@@ -140,7 +150,7 @@
       }
       datum baseAddress
       {
-         value = "2097152";
+         value = "2105344";
          type = "String";
       }
    }
@@ -161,7 +171,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "8";
          type = "int";
       }
    }
@@ -190,7 +200,7 @@
    {
       datum baseAddress
       {
-         value = "1049312";
+         value = "1060864";
          type = "String";
       }
    }
@@ -206,7 +216,7 @@
    {
       datum baseAddress
       {
-         value = "1049216";
+         value = "1056768";
          type = "String";
       }
    }
@@ -214,15 +224,20 @@
    {
       datum _sortIndex
       {
-         value = "2";
+         value = "3";
          type = "int";
       }
    }
    element sysid.control_slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
-         value = "1049360";
+         value = "2099200";
          type = "String";
       }
    }
@@ -230,7 +245,7 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "5";
          type = "int";
       }
    }
@@ -238,12 +253,12 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
       {
-         value = "1049248";
+         value = "2099328";
          type = "String";
       }
    }
@@ -272,7 +287,7 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "4";
          type = "int";
       }
    }
@@ -285,7 +300,7 @@
       }
       datum baseAddress
       {
-         value = "2101248";
+         value = "2099264";
          type = "String";
       }
    }
@@ -604,10 +619,10 @@
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
-  <parameter name="dataAddrWidth" value="28" />
+  <parameter name="dataAddrWidth" value="31" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_flash_0.data' start='0x0' end='0xB8000' type='altera_onchip_flash.data' /><slave name='uart_16550_0.avalon_slave' start='0x100000' end='0x100200' type='altera_16550_uart.avalon_slave' /><slave name='i2c_avalon_0.csr' start='0x100200' end='0x100240' type='altera_avalon_i2c.csr' /><slave name='ext_flash_0.avl_csr' start='0x100240' end='0x100280' type='altera_generic_quad_spi_controller2.avl_csr' /><slave name='spi_avalon_0.spi_control_port' start='0x100280' end='0x1002A0' type='altera_avalon_spi.spi_control_port' /><slave name='timer_avalon_0.s1' start='0x1002A0' end='0x1002C0' type='altera_avalon_timer.s1' /><slave name='msgdma_0.csr' start='0x1002C0' end='0x1002E0' type='altera_msgdma.csr' /><slave name='pio_avalon_led.s1' start='0x1002E0' end='0x1002F0' type='altera_avalon_pio.s1' /><slave name='msgdma_0.descriptor_slave' start='0x1002F0' end='0x100300' type='altera_msgdma.descriptor_slave' /><slave name='altpll_0.pll_slave' start='0x100300' end='0x100310' type='altpll.pll_slave' /><slave name='sysid.control_slave' start='0x100310' end='0x100318' type='altera_avalon_sysid_qsys.control_slave' /><slave name='onchip_flash_0.csr' start='0x200000' end='0x200008' type='altera_onchip_flash.csr' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x200800' end='0x201000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='uart_jtag_0.avalon_jtag_slave' start='0x201000' end='0x201008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='onchip_memory2_0.s1' start='0x400000' end='0x420000' type='altera_avalon_onchip_memory2.s1' /><slave name='ext_flash_0.avl_mem' start='0x8000000' end='0xC000000' type='altera_generic_quad_spi_controller2.avl_mem' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_flash_0.data' start='0x0' end='0xB8000' type='altera_onchip_flash.data' /><slave name='uart_16550_0.avalon_slave' start='0x100000' end='0x100200' type='altera_16550_uart.avalon_slave' /><slave name='i2c_avalon_0.csr' start='0x101000' end='0x101040' type='altera_avalon_i2c.csr' /><slave name='spi_avalon_0.spi_control_port' start='0x102000' end='0x102020' type='altera_avalon_spi.spi_control_port' /><slave name='pio_avalon_led.s1' start='0x103000' end='0x103010' type='altera_avalon_pio.s1' /><slave name='ext_flash_0.avl_csr' start='0x181000' end='0x181040' type='altera_generic_quad_spi_controller2.avl_csr' /><slave name='altpll_0.pll_slave' start='0x183000' end='0x183010' type='altpll.pll_slave' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x200000' end='0x200800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid.control_slave' start='0x200800' end='0x200808' type='altera_avalon_sysid_qsys.control_slave' /><slave name='uart_jtag_0.avalon_jtag_slave' start='0x200840' end='0x200848' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='timer_avalon_0.s1' start='0x200880' end='0x2008A0' type='altera_avalon_timer.s1' /><slave name='onchip_flash_0.csr' start='0x202000' end='0x202008' type='altera_onchip_flash.csr' /><slave name='msgdma_0.csr' start='0x202100' end='0x202120' type='altera_msgdma.csr' /><slave name='msgdma_0.descriptor_slave' start='0x202120' end='0x202130' type='altera_msgdma.descriptor_slave' /><slave name='onchip_memory2_0.s1' start='0x400000' end='0x420000' type='altera_avalon_onchip_memory2.s1' /><slave name='ext_flash_0.avl_mem' start='0x70000000' end='0x74000000' type='altera_generic_quad_spi_controller2.avl_mem' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -645,15 +660,15 @@
   <parameter name="icache_size" value="4096" />
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Fast" />
-  <parameter name="instAddrWidth" value="28" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_flash_0.data' start='0x0' end='0xB8000' type='altera_onchip_flash.data' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x200800' end='0x201000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='onchip_memory2_0.s1' start='0x400000' end='0x420000' type='altera_avalon_onchip_memory2.s1' /><slave name='ext_flash_0.avl_mem' start='0x8000000' end='0xC000000' type='altera_generic_quad_spi_controller2.avl_mem' /></address-map>]]></parameter>
+  <parameter name="instAddrWidth" value="31" />
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_flash_0.data' start='0x0' end='0xB8000' type='altera_onchip_flash.data' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x200000' end='0x200800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='onchip_memory2_0.s1' start='0x400000' end='0x420000' type='altera_avalon_onchip_memory2.s1' /><slave name='ext_flash_0.avl_mem' start='0x70000000' end='0x74000000' type='altera_generic_quad_spi_controller2.avl_mem' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="127" />
+  <parameter name="internalIrqMaskSystemInfo" value="269549831" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -920,7 +935,7 @@
    start="nios2_gen2_0.data_master"
    end="uart_jtag_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00201000" />
+  <parameter name="baseAddress" value="0x00200840" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -938,7 +953,7 @@
    start="nios2_gen2_0.data_master"
    end="ext_flash_0.avl_csr">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00100240" />
+  <parameter name="baseAddress" value="0x00181000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -947,7 +962,7 @@
    start="nios2_gen2_0.data_master"
    end="ext_flash_0.avl_mem">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08000000" />
+  <parameter name="baseAddress" value="0x70000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -956,7 +971,7 @@
    start="nios2_gen2_0.data_master"
    end="sysid.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00100310" />
+  <parameter name="baseAddress" value="0x00200800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -965,7 +980,7 @@
    start="nios2_gen2_0.data_master"
    end="msgdma_0.csr">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x001002c0" />
+  <parameter name="baseAddress" value="0x00202100" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -974,7 +989,7 @@
    start="nios2_gen2_0.data_master"
    end="i2c_avalon_0.csr">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00100200" />
+  <parameter name="baseAddress" value="0x00101000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -983,7 +998,7 @@
    start="nios2_gen2_0.data_master"
    end="onchip_flash_0.csr">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00200000" />
+  <parameter name="baseAddress" value="0x00202000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1001,7 +1016,7 @@
    start="nios2_gen2_0.data_master"
    end="nios2_gen2_0.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00200800" />
+  <parameter name="baseAddress" value="0x00200000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1010,7 +1025,7 @@
    start="nios2_gen2_0.data_master"
    end="msgdma_0.descriptor_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x001002f0" />
+  <parameter name="baseAddress" value="0x00202120" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1019,7 +1034,7 @@
    start="nios2_gen2_0.data_master"
    end="altpll_0.pll_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00100300" />
+  <parameter name="baseAddress" value="0x00183000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1037,7 +1052,7 @@
    start="nios2_gen2_0.data_master"
    end="timer_avalon_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x001002a0" />
+  <parameter name="baseAddress" value="0x00200880" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1046,7 +1061,7 @@
    start="nios2_gen2_0.data_master"
    end="pio_avalon_led.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x001002e0" />
+  <parameter name="baseAddress" value="0x00103000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1055,7 +1070,7 @@
    start="nios2_gen2_0.data_master"
    end="spi_avalon_0.spi_control_port">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00100280" />
+  <parameter name="baseAddress" value="0x00102000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1064,7 +1079,7 @@
    start="nios2_gen2_0.instruction_master"
    end="ext_flash_0.avl_mem">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08000000" />
+  <parameter name="baseAddress" value="0x70000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1082,7 +1097,7 @@
    start="nios2_gen2_0.instruction_master"
    end="nios2_gen2_0.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00200800" />
+  <parameter name="baseAddress" value="0x00200000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1162,21 +1177,21 @@
    version="18.1"
    start="nios2_gen2_0.irq"
    end="msgdma_0.csr_irq">
-  <parameter name="irqNumber" value="3" />
+  <parameter name="irqNumber" value="2" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="nios2_gen2_0.irq"
    end="i2c_avalon_0.interrupt_sender">
-  <parameter name="irqNumber" value="4" />
+  <parameter name="irqNumber" value="16" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="nios2_gen2_0.irq"
    end="ext_flash_0.interrupt_sender">
-  <parameter name="irqNumber" value="6" />
+  <parameter name="irqNumber" value="28" />
  </connection>
  <connection
    kind="interrupt"
@@ -1190,21 +1205,21 @@
    version="18.1"
    start="nios2_gen2_0.irq"
    end="timer_avalon_0.irq">
-  <parameter name="irqNumber" value="2" />
+  <parameter name="irqNumber" value="1" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="nios2_gen2_0.irq"
    end="spi_avalon_0.irq">
-  <parameter name="irqNumber" value="5" />
+  <parameter name="irqNumber" value="20" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="nios2_gen2_0.irq"
    end="uart_16550_0.irq_sender">
-  <parameter name="irqNumber" value="1" />
+  <parameter name="irqNumber" value="8" />
  </connection>
  <connection
    kind="reset"
